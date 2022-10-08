@@ -1,23 +1,22 @@
-#include <unistd.h>
-#include <stdlib.h>
 #include <stdio.h>
+#include <stdlib.h>
 #include <sys/types.h>
 #include <sys/wait.h>
+#include <unistd.h>
 
-  
-  
-int main()
-{
-    for(int i=0;i<2;i++) // loop será executado n vezes (n = 2)
-    {
-        int d = i+1;
-        if(fork() == 0)
-        {
-            printf("Filho%d pid %d do Pai pid %d\n",d, getpid(),getppid());
-            exit(0);
-        }
+int main() {
+  pid_t pid = fork();
+
+  if (pid == 0) {
+    printf("Filho1 pid %d do Pai pid %d\n", getpid(), getppid());
+  } 
+  else if(pid == -1) {
+    printf("Error em criação filho");
+  }
+  else{
+    if (fork() == 0) {
+      printf("Filho2 pid %d do Pai pid %d\n", getpid(), getppid());
     }
-    for(int i=0;i<2;i++) //  loop será executado n vezes (n = 2)
-    wait(NULL);
-      
+  }
+  return (0);
 }
