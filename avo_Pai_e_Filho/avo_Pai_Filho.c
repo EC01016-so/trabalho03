@@ -1,39 +1,29 @@
+#include <signal.h>
 #include <stdio.h>
 #include <stdlib.h>
 #include <string.h>
 #include <sys/types.h>
 #include <unistd.h>
-
-int veriaveGrobal = 0;
+#include <sys/wait.h>
 
 int main() {
-  int veriavelDoFuncao = 20;
 
-  pid_t pid_do_pai, pid_do_filho, pid_do_avo;
-
-  pid_do_pai = getpid();
-
-  printf("Processo pai ---->> PID do pai : %d\n", pid_do_pai);
-
-  if (fork() == 0) {
-    pid_do_filho = getpid();
-    printf("Em Processo do filho ----->> PID do filho : %d\n", pid_do_filho);
-    printf("e PID do pai : %d\n", pid_do_pai);
-
+    // Creiando novo processo Pai do Avô
     if (fork() == 0) {
-      pid_do_avo = pid_do_pai;
-      pid_do_pai = pid_do_filho;
-      pid_do_filho = getpid();
 
-      printf("Em Processo do filho do processo PID: %d  ----->> PID do filho : "
-             "%d\n",
-             pid_do_pai, pid_do_filho);
-      printf("e PID do pai : %d\n", pid_do_pai);
-      printf("e PID do avô : %d\n", pid_do_avo);
+        if (fork() == 0) { // Creiando novo processo Filho do Pai
+            printf("Em Processo do Filho: %d, o Pai : %d\n",getpid(), getppid());
+        }
+        
+        else {
+          wait(0);  // Aguarda a saída do processo filho
+          printf("Em Processo do Pai: %d, o Filho do Avô : %d\n",getpid(), getppid());
+        }
+
+    } else {
+        wait(0); // Aguarda saída do processo pai
+        printf("Processo Avô: %d e o Pai do Avô: %d \n", getpid(),getppid());
     }
-  } else {
-    printf("Processo pai");
-  }
-  system("ps -f");
-  return (0);
+    
+    return (0);
 }
