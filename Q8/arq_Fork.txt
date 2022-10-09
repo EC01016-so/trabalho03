@@ -1,0 +1,12 @@
+
+ O laço Fork precisou de 0.574921 segundos
+ O laço Fork precisou de 0.577232 segundos
+ O laço Fork precisou de 0.575026 segundos
+ O laço Fork precisou de 0.575557 segundos
+ O laço Fork precisou de 0.576738 segundos
+ O laço Fork precisou de 0.575375 segundos
+ O laço Fork precisou de 0.578186 segundos
+ O laço Fork precisou de 0.579138 segundos
+ O laço Fork precisou de 0.576048 segundos
+ O laço Fork precisou de 0.575181 segundos
+ A media do laço para Fork eh 0.057518 segundos

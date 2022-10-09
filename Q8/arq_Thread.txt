@@ -1,0 +1,12 @@
+
+ O laço do Thread precisou de 0.575958 segundos
+ O laço do Thread precisou de 0.575980 segundos
+ O laço do Thread precisou de 0.578451 segundos
+ O laço do Thread precisou de 0.576173 segundos
+ O laço do Thread precisou de 0.575485 segundos
+ O laço do Thread precisou de 0.576916 segundos
+ O laço do Thread precisou de 0.576296 segundos
+ O laço do Thread precisou de 0.576662 segundos
+ O laço do Thread precisou de 0.577344 segundos
+ O laço do Thread precisou de 0.576161 segundos
+ A media do laço para thread eh 0.576543 segundos
