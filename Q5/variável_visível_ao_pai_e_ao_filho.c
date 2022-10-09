@@ -8,10 +8,10 @@
 int variavel;
 
 int main() {
-    pthread_t thread;
 
-    variavel = 1;
+    variavel = 1; // o pai inicialize a variável com 1
     printf("%d\n", variavel);
+
     pid_t pid = fork();
     if (pid == -1) {
         printf("Error em criação filho");
@@ -19,7 +19,7 @@ int main() {
 
     if(pid == 0) {
         printf("Filho pid %d do Pai pid %d\n", getpid(), getppid());
-        variavel += 5;
+        variavel = 5; // o filho altere o valor da variável para 5
         printf("%d\n", variavel);
         exit(variavel);
     }
