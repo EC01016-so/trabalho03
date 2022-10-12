@@ -12,14 +12,14 @@ int main()
     int erro = 0, contador = 0, pid, pidmax = 0;
         pthread_t t;
     
-    // Criar threads
+    // Cria threads
     while (erro == 0){
         erro = pthread_create (&t, NULL, thread, NULL);
         contador++;
     }
     printf("Máximo de threads: %d\n", contador);
  
-    // Criar processos      
+    // Cria processos      
     while (1) {
         pid = fork();
         pidmax = getpid();
