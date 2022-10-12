@@ -5,28 +5,32 @@
 #include <unistd.h>
 #include <pthread.h>
 
-int variavel;
+int variavel = 0;
 
 int main() {
-
-    variavel = 1; // o pai inicialize a variável com 1
+    
+    // O Pai inicializa a variável com 1
+    variavel = 1; 
     printf("%d\n", variavel);
-
+    // Criação do Filho
     pid_t pid = fork();
-    if (pid == -1) {
-        printf("Error em criação filho");
-    } 
-
+    // Verifica se o filho foi criado
     if(pid == 0) {
         printf("Filho pid %d do Pai pid %d\n", getpid(), getppid());
-        variavel = 5; // o filho altere o valor da variável para 5
+        // O Filho altera o valor da variável para 5
+        variavel = 5;
         printf("%d\n", variavel);
         exit(variavel);
     }
-    else{
+    // Caso o Filho não seja criado
+    else if (pid == -1) {
+        printf("Erro na criação do Filho");
+        return (1);
+    }
+    // O Pai imprime a variavel novamente
+    else {
         waitpid(pid, NULL, 8);
         printf("Após alteração por Filho %d\n", variavel);
     }
-       
     return (0);
 }
