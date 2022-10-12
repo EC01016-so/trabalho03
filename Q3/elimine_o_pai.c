@@ -31,7 +31,7 @@ int main() {
 
     } else {
         wait(0); // Aguarda saída do processo pai
-        printf("Processo Avô: %d\n o Pai do Avô: %d", getpid(),getppid());
+        printf("Processo Avô: %d o Pai do Avô: %d\n", getpid(),getppid());
     }
     
     return (0);
