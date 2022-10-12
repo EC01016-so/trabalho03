@@ -6,13 +6,17 @@
 #include <stdlib.h>
 #include <wait.h>
 
-
+// Criando variaveis do tipo clock_t
 clock_t iniciar, parar;
 unsigned long t,z;
 double soma=0.0, media=0.0;
-int m =20; // Número de execuções da tarefa
+
+// Número de execuções da tarefa
+int m =20;
+// Arquivo que armazenará o resultado de tempo de execução e a média do tempo
 FILE *fp;
 
+// Função que contará o tempo de execução da tarefa
 void *trabalho ()
 {   double k;
     iniciar = clock();
@@ -26,7 +30,7 @@ void *trabalho ()
     printf("\n O laço do Thread precisou de %f segundos", k);
     pthread_exit(0);
 }
-
+// Função para calcular a média do tempo
 void *clu_media(){
     media = soma / m;
     fprintf(fp, "\n A media do laço para thread eh %f segundos", media);
