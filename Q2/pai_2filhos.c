@@ -13,19 +13,14 @@ int main() {
   } 
   // Se o Filho1 não foi criado
   else if(pid == -1) {
-    printf("Erro na criação do Filho1");
-    return (1);
+    printf("Erro na criação do Filho1\n");
   }
   else{
     // Criação de Filho2
     if (fork() == 0) {
       printf("Filho2 pid %d do Pai pid %d\n", getpid(), getppid());
     }
-    else {
-    // Se o Filho2 não foi criado
-    printf("Erro na criação do Filho2");
-    return (2);
-    }
+    
   }
   return (0);
 }
