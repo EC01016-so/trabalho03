@@ -7,10 +7,15 @@ char *abc[3];
 
 // Função para printar na tela ABC
 void *task_thread(void *tarefa){
+    int i = 0;
     sleep(1);
     long Id_do_tarefa;
     Id_do_tarefa = (long)tarefa;
     printf("%s", abc[Id_do_tarefa]);
+    i+=1;
+    if(i == 2){
+        printf("\n");
+    }
     // Fazer a thread repetir a mesma ordem
     pthread_exit(NULL);
 }
@@ -21,7 +26,7 @@ int main()
     long tarefa[3];
     abc[0] = "A"; // Mensagem 1
     abc[1] = "B"; // Mensagem 2
-    abc[2] = "C"; // Mensagem 1
+    abc[2] = "C\n"; // Mensagem 3
 
     for(int i = 0; i < 3; i++){
         tarefa[i] = i;
